@@ -1,0 +1,20 @@
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.col {
+  border: cornflowerblue solid 1px;
+  font-size: 25px;
+  margin: 2px 3px 0 3px;
+  border-radius: 4px;
+  height: 100vh;
+}
+
+.nameDiv {
+  border: cornflowerblue solid 1px;
+  border-radius: 4px;
+}
+.card {
+  margin-top: 10px;
+  text-align: left;
+}
