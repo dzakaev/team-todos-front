@@ -3,10 +3,10 @@ import Cards from "../Cards";
 import styles from "./styles.module.css";
 
 const CategoryCard = ({ category }) => {
+  // njkhjhjh
   return (
     <div className={`col text-center ${styles.col} `}>
       {/*<Cards categoryId={category._id}/>*/}
-
       <div className={`card text-white  mb-3`}>
         <div className="card-header bg-dark ">{category.name}</div>
         {/*<div className={`card-body bg-primary ${styles.card}`}>*/}

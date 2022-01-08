@@ -5,19 +5,32 @@ import { loadCategories } from "../../redux/features/todos";
 
 const Categories = () => {
   const categories = useSelector((state) => state.categories);
+  const loading = useSelector((state) => state.loading);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadCategories());
-  },[dispatch]);
+  }, [dispatch]);
   return (
     <div className="container-fluid">
-      <div className="row">
-        {categories.map((category) => {
-          return <CategoryCard key={category._id} category={category} />;
-        })}
-      </div>
+      {loading ? (
+        <div className="text-center">
+          <div
+            className="spinner-grow"
+            style={{ width: "20rem", height: "20rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      ) : (
+        <div className="row">
+          {categories.map((category) => {
+            return <CategoryCard key={category._id} category={category} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };
