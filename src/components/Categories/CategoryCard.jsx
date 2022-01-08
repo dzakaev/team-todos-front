@@ -21,6 +21,9 @@ const CategoryCard = ({ category }) => {
         {/*    карточки и составления основной части содержимого карточки.*/}
         {/*  </p>*/}
         {/*</div>*/}
+        <div className={'text-dark'}>
+          <Cards categoryId={category._id}/>
+        </div>
       </div>
     </div>
   );
