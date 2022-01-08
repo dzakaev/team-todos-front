@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CategoryCard from "./CategoryCard";
-import { loadCategories } from "../../redux/features/todos";
+import { loadCategories, loadTodosByCat } from "../../redux/features/todos";
 
 const Categories = () => {
   const categories = useSelector((state) => state.categories);
@@ -10,6 +10,7 @@ const Categories = () => {
 
   useEffect(() => {
     dispatch(loadCategories());
+    dispatch(loadTodosByCat());
   },[dispatch]);
   return (
     <div className="container-fluid">

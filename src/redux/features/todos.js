@@ -17,6 +17,17 @@ export const todoReducer = (state = initialState, action) => {
         ...state,
         loading: true,
       };
+    case "todo/load/fulfilled":
+      return {
+        ...state,
+        loading: false,
+        todos: action.payload,
+      };
+    case "todo/load/pending":
+      return {
+        ...state,
+        loading: true,
+      };
 
     default:
       return state;
@@ -25,26 +36,26 @@ export const todoReducer = (state = initialState, action) => {
 
 export const loadCategories = () => {
   return async (dispatch) => {
-    dispatch({type: "category/load/pending"});
+    dispatch({ type: "category/load/pending" });
     try {
-      const res = await fetch("http://localhost:3001/categories")
-      const json = await res.json()
-      dispatch({type: "category/load/fulfilled", payload: json})
-    }catch (e) {
-      console.log(e.message)
+      const res = await fetch("http://localhost:3001/categories");
+      const json = await res.json();
+      dispatch({ type: "category/load/fulfilled", payload: json });
+    } catch (e) {
+      console.log(e.message);
     }
-  }
-}
+  };
+};
 
-
-// export const loadTodosByCat = (id) => {
-//   return async (dispatch) => {
-//     dispatch({type: "category/load/pending"});
-//     try {
-//       const res = await fetch(`sASasASas/${id}`)
-//       const json = await res.json()
-//       dispatch({type: "category/load/fulfilled", payload: json})
-//     }catch (e) {
-//       console.log(e.message)
-//     }
-//   }
+export const loadTodosByCat = () => {
+  return async (dispatch) => {
+    dispatch({ type: "todo/load/pending" });
+    try {
+      const res = await fetch(`http://localhost:3001/todos/`);
+      const json = await res.json();
+      dispatch({ type: "todo/load/fulfilled", payload: json });
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
